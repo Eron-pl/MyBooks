@@ -166,23 +166,19 @@ namespace MyBooks.MVVM.View
             {
                 using (var context = new Context())
                 {
-                    //var categoryToRemove = context.Categories.Where(c => c.CategoryID == Convert.ToInt32(EditCBCategories.SelectedValue)).First();
-                    //context.Categories.Remove(categoryToRemove);
-
-                    var editedCategory = new Category
-                    {
-                        CategoryID = Convert.ToInt32(EditCBCategories.SelectedValue),
-                        Name = EditCategoryName.Text,
-                    };
+                    var categoryToEdit = context
+                        .Categories
+                        .Include(c => c.Books)
+                        .FirstOrDefault(c => c.CategoryID == Convert.ToInt32(EditCBCategories.SelectedValue));
 
                     var books = context
                         .Books
                         .Where(b => booksCheckBoxes.Contains(b.Title)).ToList();
 
-                    editedCategory.Books = books;
+                    categoryToEdit.Books = books;
+                    categoryToEdit.Name = EditCategoryName.Text;
 
-                    context.Categories.Update(editedCategory);
-                    //context.Categories.Add(editedCategory);
+                    context.Categories.Update(categoryToEdit);
                     context.SaveChanges();
 
                     ViewModels.Update();
