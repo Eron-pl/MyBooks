@@ -89,8 +89,6 @@ namespace MyBooks.MVVM.View
                         .Include(b => b.Categories)
                         .FirstOrDefault(b => b.BookID == Convert.ToInt32(EditCBBooks.SelectedValue));
 
-                    // .Where(b => b.BookID == Convert.ToInt32(EditCBBooks.SelectedValue)).First();
-
                     bookToUpdate.Title = EditBookTitle.Text;
                     bookToUpdate.Rating = Convert.ToInt32(EditBookRating.Text);
                     bookToUpdate.Status = bookStatus;
