@@ -1,0 +1,132 @@
+﻿<Window x:Class="MyBooks.Windows.WindowBooksAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyBooks.Windows"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="600" Width="450"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+
+
+
+    <Border CornerRadius="20" Background="{StaticResource ClrMainBackground}"
+            materialDesign:ShadowAssist.ShadowDepth="Depth5"
+            MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <!--Closing button-->
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right"
+                        VerticalAlignment="Center" Margin="0 0 20 0">
+                <Button Style="{StaticResource TopButtons}"
+                            Name="ButtonCloseWindow"
+                            Click="ButtonCloseWindow_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" />
+                </Button>
+            </StackPanel>
+
+            <!--Lower part-->
+            <StackPanel Grid.Row="1">
+                
+                <!--Title-->
+                <StackPanel Margin="25 20 20 0">
+                    <TextBlock Text="Dodaj książke" FontSize="25"
+                               Foreground="{StaticResource ClrMainText}"/>
+                </StackPanel>
+                
+                <!--Input fields-->
+                <Grid VerticalAlignment="Center" Margin="30 10 30 30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+
+                    
+                    <TextBlock Text="Tytuł" Grid.Column="0" Grid.Row="0"
+                               Style="{StaticResource WindowFieldTitle}"/>
+                    <TextBox Width="175" Height="30" Grid.Column="1" Grid.Row="0"
+                             Name="BookTitle"/>
+
+
+                    <TextBlock Text="Autor" Grid.Column="0" Grid.Row="1"
+                               Style="{StaticResource WindowFieldTitle}"/>
+                    <ComboBox Width="175" Height="30" Grid.Column="1" Grid.Row="1"
+                              HorizontalAlignment="Center" 
+                              SelectedValuePath="AuthorID"
+                              SelectedValue="{Binding Path=AuthorID}"
+                              Name="BookAuthor">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="FirstName"/>
+                                            <Binding Path="Surname"/>
+                                            </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+
+                    <TextBlock Text="Przeczytana" Grid.Column="0" Grid.Row="2"
+                               Style="{StaticResource WindowFieldTitle}"/>
+                    <ComboBox Width="175" Height="30" Grid.Column="1" Grid.Row="2"
+                              Name="BookStatus">
+                        <ComboBoxItem Content="Tak" />
+                        <ComboBoxItem Content="Nie" />
+                    </ComboBox>
+
+                    <TextBlock Text="Ocena" Grid.Column="0" Grid.Row="3"
+                               Style="{StaticResource WindowFieldTitle}"/>
+                    <TextBox Width="175" Height="30" Grid.Column="1" Grid.Row="3"
+                             Name="BookRating"/>
+
+                    <TextBlock Text="Kategorie" Grid.Column="0" Grid.Row="4"
+                               Style="{StaticResource WindowFieldTitle}"/>
+                    
+                    <ScrollViewer Grid.Column="1" Grid.Row="4" Margin="0 10 0 0">
+                        <StackPanel Name="AddCategories"/>
+                    </ScrollViewer>
+
+                </Grid>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                        Margin="0 0 50 0">
+                <Button Width="60" Height="40" Name="ButtonAddBook" Click="ButtonAddBook_Click">
+                    <materialDesign:PackIcon Kind="Check" Height="30" Width="30"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+            
+        
+    </Border>
+
+</Window>

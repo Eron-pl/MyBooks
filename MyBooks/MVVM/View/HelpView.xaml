@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="MyBooks.MVVM.View.HelpView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyBooks.MVVM.View"
+             mc:Ignorable="d" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="{StaticResource ClrSecondBackground}"
+            CornerRadius="0 0 20 0">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Pomoc" FontSize="30" Margin="10 30 0 20"/>
+                <materialDesign:Card>
+                    <StackPanel>
+                        <Expander HorizontalAlignment="Stretch"
+                                  Header="Jak dodać dane?">
+                            <StackPanel
+                                Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                                <TextBlock TextWrapping="Wrap" Margin="5 0">
+                                    W zakładkach Książki, Autorzy oraz Ketegorie na dole znajduje się przycisk z plusem, po jego kliknięciu otworzy się okno do dodania danych.
+                                    Należy wypełnić wszystkie wymagane dane i nacisnąć przycisk do ztwierdzenia.
+                                </TextBlock>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander HorizontalAlignment="Stretch"
+                                  Header="Jak usunąć dane?">
+                            <StackPanel
+                                Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                                <TextBlock TextWrapping="Wrap" Margin="5 0">
+                                   Po przejściu do zakładki z danymi należy zaznazyć wiersz (klikając w jakąkolkwiek wartość) lub zaznaczyć parę 
+                                    wierszy przeciągając po nich myszką. Zaznaczone wiersze będą miały jaśniejszy kolor. Następnie trzeba kliknąć przycisk na dole ze znakiem minusa i potwierdzić usunięcie danych.
+                                </TextBlock>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander HorizontalAlignment="Stretch"
+                                  Header="Jak modyfikować dane?">
+                            <StackPanel
+                                Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                                <TextBlock TextWrapping="Wrap" Margin="5 0">
+                                  Należy udać się do zakładki Edycja, w niej znajdują się trzy zakładki: Książka, Autor, Kategoria. 
+                                    Należy wybrać zakładkę, następnie wybrać z listy po lewej stronie obiekt który będziemy modyfikowany i w pola po prawej stronie wpisać/wybrać nowe dane.
+                                    Po wpisaniu danych należy kliknąć w przycisk Zatwierdź.  
+                                </TextBlock>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander HorizontalAlignment="Stretch"
+                                  Header="Jak zmienić adres serwera?">
+                            <StackPanel
+                                Orientation="Vertical"
+                                TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                Margin="24,8,24,16">
+                                <TextBlock TextWrapping="Wrap" Margin="5 0">
+                                  Należy udać się do zakładki Ustawienia i wpisać nowy adres w polu Adres serwera a następnie zapisać ustawienia klikając w przycisk na dole zakładki. Jeżeli adres serwera będzie nie prawidłowy, aplikacja może przestać działać. 
+                                    Alternatywną metodą jest ręczna zmiana adresu serwera w pliku 'connection-string.txt', który znajduję się w plikach programu.
+                                </TextBlock>
+                            </StackPanel>
+                        </Expander>
+
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

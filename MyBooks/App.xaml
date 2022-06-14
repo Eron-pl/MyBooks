@@ -1,0 +1,169 @@
+﻿<Application x:Class="MyBooks.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MyBooks"
+             xmlns:view="clr-namespace:MyBooks.MVVM.View"
+             xmlns:viewModel="clr-namespace:MyBooks.MVVM.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Context Binding-->
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:BooksViewModel}">
+                <view:BooksView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AuthorsViewModel}">
+                <view:AuthorsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CategoriesViewModel}">
+                <view:CategoriesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EditViewModel}">
+                <view:EditView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:SettingsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HelpViewModel}">
+                <view:HelpView/>
+            </DataTemplate>
+
+            <!--Colors-->
+            <SolidColorBrush x:Key="ClrMainText" Color="#dadada" />
+            <SolidColorBrush x:Key="ClrSecondText" Color="#858585" />
+            <SolidColorBrush x:Key="ClrMainBackground" Color="#212121" />
+            <SolidColorBrush x:Key="ClrSecondBackground" Color="#303030" />
+            <SolidColorBrush x:Key="ClrThirdBackground" Color="#383838" />
+            <SolidColorBrush x:Key="ClrYellow" Color="#ffeb3b" />
+            <SolidColorBrush x:Key="ClrYellowLight" Color="#ffff72" />
+            
+            <!--Styles-->
+            <Style x:Key="NavigationIcons" TargetType="materialDesign:PackIcon">
+                <Setter Property="Margin" Value="0 0 10 0"/>
+                <Setter Property="Height" Value="17"/>
+                <Setter Property="Width" Value="17"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="{StaticResource ClrYellow}"/>
+            </Style>
+
+            <Style x:Key="TopButtons" TargetType="Button">
+                <Setter Property="Margin" Value="15,0"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="{StaticResource ClrYellow}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource ClrSecondBackground}"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="NavigationTexts" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Foreground" Value="{StaticResource ClrMainText}"/>
+            </Style>
+
+            <Style x:Key="NavigationButtonsContainer" TargetType="StackPanel">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="135"/>
+            </Style>
+
+            <Style x:Key="NavigationButtons" TargetType="Button">
+                <Setter Property="Margin" Value="0,0"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" BorderBrush="{StaticResource ClrMainBackground}" BorderThickness="2 0 0 0" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource ClrThirdBackground}"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="BorderBrush" Value="Yellow" TargetName="border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CurrentNavigationTabStyle" TargetType="Button">
+                <Setter Property="Margin" Value="0,0"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="Yellow"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" BorderBrush="{StaticResource ClrMainBackground}" BorderThickness="2 0 0 0" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="False">
+                                    <Setter Property="Background" Value="{StaticResource ClrSecondBackground}"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="BorderBrush" Value="Yellow" TargetName="border"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource ClrSecondBackground}"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="BorderBrush" Value="Yellow" TargetName="border"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="NavigationButtonsTitle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Foreground" Value="#383838"/>
+                <Setter Property="Margin" Value="20 0 0 5"/>
+            </Style>
+
+            <Style x:Key="dgElement" TargetType="TextBlock">
+                <Setter Property="Margin" Value="0 8 0 0"/>
+            </Style>
+
+            <Style x:Key="WindowFieldTitle" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="{StaticResource ClrMainText}"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="0 0 15 0"/>
+            </Style>
+
+
+            <!--Material Design-->
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Yellow" SecondaryColor="Lime" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

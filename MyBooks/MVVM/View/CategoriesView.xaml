@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="MyBooks.MVVM.View.CategoriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyBooks.MVVM.View"
+             mc:Ignorable="d" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Border Background="{StaticResource ClrSecondBackground}"
+            CornerRadius="0 0 20 0">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Kategorie" FontSize="30" Margin="10 30 0 20"/>
+                <DataGrid x:Name="dgCategories" AutoGenerateColumns="false" Margin="10"
+                          SelectionMode="Extended" CanUserAddRows="false">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" Binding="{Binding CategoryID}"
+                                            ElementStyle="{StaticResource dgElement}"
+                                            IsReadOnly="True"/>
+
+                        <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" 
+                                            ElementStyle="{StaticResource dgElement}"
+                                            IsReadOnly="True" />
+
+                        <DataGridTemplateColumn Header="Książki" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ListBox Margin="0" ItemsSource="{Binding Books}" DisplayMemberPath="Title"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Margin="0 0 30 0" Name="ButtonRemoveBooks"
+                        Click="ButtonRemoveCategories_Click">
+                    <materialDesign:PackIcon Kind="Minus"/>
+                </Button>
+                
+                <Button Margin="0 0 30 0" Name="ButtonAddCategory" Click="ButtonAddCategory_Click">
+                    <materialDesign:PackIcon Kind="Plus"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

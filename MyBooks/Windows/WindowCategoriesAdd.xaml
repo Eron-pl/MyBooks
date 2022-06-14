@@ -1,0 +1,85 @@
+﻿<Window x:Class="MyBooks.Windows.WindowCategoriesAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyBooks.Windows"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="275" Width="450"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+
+
+
+    <Border CornerRadius="20" Background="{StaticResource ClrMainBackground}"
+            materialDesign:ShadowAssist.ShadowDepth="Depth5"
+            MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <!--Closing button-->
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right"
+                        VerticalAlignment="Center" Margin="0 0 20 0">
+                <Button Style="{StaticResource TopButtons}"
+                            Name="ButtonCloseWindow"
+                            Click="ButtonCloseWindow_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" />
+                </Button>
+            </StackPanel>
+
+            <!--Lower part-->
+            <StackPanel Grid.Row="1">
+
+                <!--Title-->
+                <StackPanel Margin="25 20 20 0">
+                    <TextBlock Text="Dodaj kategorie" FontSize="25"
+                               Foreground="{StaticResource ClrMainText}"/>
+                </StackPanel>
+
+                <!--Input fields-->
+                <Grid VerticalAlignment="Center" Margin="30 10 30 30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Text="Nazwa" Grid.Column="0" Grid.Row="0"
+                               Style="{StaticResource WindowFieldTitle}"/>
+                    <TextBox Width="175" Height="30" Grid.Column="1" Grid.Row="0"
+                             Name="CategoryName"/>
+
+                </Grid>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                        Margin="0 0 50 0">
+                <Button Width="60" Height="40" Name="ButtonAddCategory" Click="ButtonAddCategory_Click">
+                    <materialDesign:PackIcon Kind="Check" Height="30" Width="30"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
+
+    </Border>
+
+</Window>
