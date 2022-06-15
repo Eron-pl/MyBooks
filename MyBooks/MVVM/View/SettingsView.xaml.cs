@@ -1,4 +1,5 @@
-﻿using MyBooks.Other;
+﻿using MyBooks.MVVM.Model;
+using MyBooks.Other;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +34,22 @@ namespace MyBooks.MVVM.View
             if(SettingsConnectionString.Text != String.Empty)
             {
                 ConnectionString.Address = SettingsConnectionString.Text;
+                MessageBox.Show("Udało się zapisać ustawienia.");
             }
             else
             {
                 MessageBox.Show("Nie udało się zapisać ustwień! Nieprawidłowo wypełnione pola");
             }
+        }
+
+        private void ButtonTestConnection_Click(object sender, RoutedEventArgs e)
+        {
+            Context context = new Context();
+
+            if(context.Database.CanConnect())
+                MessageBox.Show("Udało się połączyć z bazą danych.");
+            else
+                MessageBox.Show("Nie udało się połączyć z bazą danych.");
         }
     }
 }

@@ -16,9 +16,7 @@ namespace MyBooks.MVVM.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             optionsBuilder.UseSqlServer(@$"Server={ConnectionString.Address};Database=MyBooks;Trusted_Connection=True");
-
         }
     
     }

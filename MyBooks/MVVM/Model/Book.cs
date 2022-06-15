@@ -27,12 +27,12 @@ namespace MyBooks.MVVM.Model
         {
             using (Context context = new Context())
             {
-                var books = context.Books.ToList();
+                var books = context.Books.OrderBy(b => b.Author.FirstName).ToList();
 
                 foreach (var book in books)
                 {
-                    var author = context.Authors.Where(a => a.AuthorID == book.AuthorID).ToList();
-                    book.Author = author[0];
+                    var author = context.Authors.Where(a => a.AuthorID == book.AuthorID).First();
+                    book.Author = author;
                 }
 
                 return books;

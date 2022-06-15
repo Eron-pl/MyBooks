@@ -108,7 +108,6 @@ namespace MyBooks.MVVM.View
             {
                 MessageBox.Show("Nie udało sie zmienić danych! Nie wypełniono niektórych pól");
             }
-
         }
 
         private void ButtonEditAuthor_Click(object sender, RoutedEventArgs e)
@@ -145,6 +144,7 @@ namespace MyBooks.MVVM.View
 
                     ViewModels.Update();
 
+                    MessageBox.Show("Udało się zmienić dane.");
                 }
             }
             else
@@ -182,6 +182,8 @@ namespace MyBooks.MVVM.View
                     context.SaveChanges();
 
                     ViewModels.Update();
+
+                    MessageBox.Show("Udało się zmienić dane.");
                 }
             }
             else

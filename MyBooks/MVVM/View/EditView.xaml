@@ -97,7 +97,7 @@
                                 Style="{StaticResource MaterialDesignFilledComboBox}"
                                 IsEnabled="{Binding Path=IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
                                 materialDesign:HintAssist.Hint="Przeczytana" VerticalAlignment="Top"
-                                Width="100" Margin="0 0 10 0" Height="45">
+                                Width="110" Margin="0 0 10 0" Height="45">
                                             <ComboBoxItem>
                                                 Tak
                                             </ComboBoxItem>
@@ -111,7 +111,7 @@
                                 VerticalAlignment="Center"
                                 AcceptsReturn="True"
                                 TextWrapping="Wrap" Name="EditBookRating"
-                                Width="100" Height="45" 
+                                Width="90" Height="45" 
                                 materialDesign:HintAssist.Hint="Ocena"
                                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}"
                                 Margin="0 0 0 15"/>

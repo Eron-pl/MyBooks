@@ -33,17 +33,10 @@
                           CanUserAddRows="false" SelectionMode="Extended">
                     <DataGrid.Columns>
                         
+                        
+                        
                         <DataGridTextColumn IsReadOnly="True" Header="#" Binding="{Binding BookID}"
                                             Width="0.3*"/>
-
-                        <materialDesign:DataGridTextColumn IsReadOnly="True" Header="Tytuł" Binding="{Binding Title}"
-                                                            Width="1*"/>
-
-                        <DataGridTextColumn IsReadOnly="True" Header="Ocena" Binding="{Binding Rating}"
-                                             Width="0.75*"/>
-
-                        <DataGridTextColumn IsReadOnly="True" Header="Przeczytana" Binding="{Binding Status, Converter={StaticResource YesNoToBooleanConverter}}"
-                                             Width="1*"/>
 
                         <DataGridTextColumn IsReadOnly="True" Header="Autor"
                                              Width="1*" SortMemberPath="Author.FirstName">
@@ -54,6 +47,17 @@
                                 </MultiBinding>
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
+
+                        <DataGridTextColumn IsReadOnly="True" Header="Tytuł" Binding="{Binding Title}"
+                                                            Width="1*"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Header="Ocena" Binding="{Binding Rating}"
+                                             Width="0.5*"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Header="Przeczytana" Binding="{Binding Status, Converter={StaticResource YesNoToBooleanConverter}}"
+                                             Width="0.5*"/>
+
+                        
 
                         
                     </DataGrid.Columns>
