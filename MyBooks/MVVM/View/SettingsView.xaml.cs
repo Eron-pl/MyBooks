@@ -50,6 +50,8 @@ namespace MyBooks.MVVM.View
                 MessageBox.Show("Udało się połączyć z bazą danych.");
             else
                 MessageBox.Show("Nie udało się połączyć z bazą danych.");
+
+            context.Dispose();
         }
     }
 }

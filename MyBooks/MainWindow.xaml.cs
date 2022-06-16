@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using MyBooks.Other;
 using MyBooks.MVVM.Model;
 using MyBooks.Windows;
+using System.IO;
 
 namespace MyBooks
 {
@@ -24,6 +25,19 @@ namespace MyBooks
     {
         public MainWindow()
         { 
+            // Sprawdzanie połączenia z serwerem bazy danych
+            Context context = new Context();
+            if (!context.Database.CanConnect())
+            {
+                var file = Directory.GetCurrentDirectory() + @"\connection-string.txt";
+
+                MessageBox.Show($"Upewnij się że w pliku: \n\n{file}\n\njest wpisany odpowiedni adres serwera bazy danych.\n\n" +
+                    "Wpisz nowy adres serwera bazy danych, zapisz plik i spróbuj włączyc program ponownie."
+                    , "Nie udało się połączyć z bazą danych");
+                Environment.Exit(1);
+            }
+            context.Dispose();
+
             InitializeComponent();
             NavButtonHome.SetResourceReference(Button.StyleProperty, "CurrentNavigationTabStyle");
             Buttons.Source = StackPanelNavigation;
